@@ -36,7 +36,7 @@ public class WordCountTopKDriver extends Configured implements Tool {
 		try {
 			Configuration conf = new Configuration();
 
-			Job job = new Job(conf, "WordCount");
+			Job job = new Job(conf, "task-1");
 			job.setJarByClass(WordCountTopKDriver.class);
 
 			// specify a Mapper
@@ -60,30 +60,30 @@ public class WordCountTopKDriver extends Configured implements Tool {
 				return 1;
 			}
 
-			Job job2 = new Job(conf, "TopK");
-			job2.setJarByClass(WordCountTopKDriver.class);
+			// Job job2 = new Job(conf, "TopK");
+			// job2.setJarByClass(WordCountTopKDriver.class);
 
-			// specify a Mapper
-			job2.setMapperClass(TopKMapper.class);
+			// // specify a Mapper
+			// job2.setMapperClass(TopKMapper.class);
 
-			// specify a Reducer
-			job2.setReducerClass(TopKReducer.class);
+			// // specify a Reducer
+			// job2.setReducerClass(TopKReducer.class);
 
-			// specify output types
-			job2.setOutputKeyClass(Text.class);
-			job2.setOutputValueClass(IntWritable.class);
+			// // specify output types
+			// job2.setOutputKeyClass(Text.class);
+			// job2.setOutputValueClass(IntWritable.class);
 
-			// set the number of reducer to 1
-			job2.setNumReduceTasks(1);
+			// // set the number of reducer to 1
+			// job2.setNumReduceTasks(1);
 
-			// specify input and output directories
-			FileInputFormat.addInputPath(job2, new Path(args[1]));
-			job2.setInputFormatClass(KeyValueTextInputFormat.class);
+			// // specify input and output directories
+			// FileInputFormat.addInputPath(job2, new Path(args[1]));
+			// job2.setInputFormatClass(KeyValueTextInputFormat.class);
 
-			FileOutputFormat.setOutputPath(job2, new Path(args[2]));
-			job2.setOutputFormatClass(TextOutputFormat.class);
+			// FileOutputFormat.setOutputPath(job2, new Path(args[2]));
+			// job2.setOutputFormatClass(TextOutputFormat.class);
 
-			return (job2.waitForCompletion(true) ? 0 : 1);
+			// return (job2.waitForCompletion(true) ? 0 : 1);
 
 		} catch (InterruptedException | ClassNotFoundException | IOException e) {
 			System.err.println("Error during driver job.");

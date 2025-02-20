@@ -17,7 +17,7 @@ public class WordCountMapper extends Mapper<Object, Text, Text, IntWritable> {
 	public void map(Object key, Text value, Context context) 
 			throws IOException, InterruptedException {
 		
-		String airline_id = value.toString().split(regex:",")[7];
+		String airline_id = value.toString().split(",")[7];
 
 		word.set(airline_id);
 		context.write(word, counter);
